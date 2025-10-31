@@ -1,2 +1,2 @@
 # ohMyDB
-Some Drafts about Database Designs, HA, Failover, Replication, etc.
+Some Drafts about Database Implementation, Architectural Design, HA, Failover, Replication, etc.
