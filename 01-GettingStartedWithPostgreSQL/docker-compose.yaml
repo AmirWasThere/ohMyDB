@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  postgresql:
+    image: postgres:16
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysupersecretpassword
+      POSTGRES_DB: postgresdb
+    #
+    ports:
+      - "5432:5432"
+    networks:
+      - pgnetwork
+    #
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    #
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgresdb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
+
+networks:
+  pgnetwork:
+    driver: bridge
